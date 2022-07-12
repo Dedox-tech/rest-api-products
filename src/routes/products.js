@@ -36,12 +36,15 @@ router.get("/", async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-    res.send(req.query.name);
 });
 
 // Post the data provided in the body object
 router.post("/", async (req, res) => {
-    res.send(req.body);
+    const newProduct = await services.saveNewProduct(req.body);
+    if (!newProduct) {
+        res.send("An error ocurred saving the product in the database");
+    }
+    res.send("The product was saved successfully");
 });
 
 // Put request modify the entire object
