@@ -1,10 +1,19 @@
+/* eslint-disable no-console */
 const express = require("express");
 
 const router = express.Router();
 
+const services = require("../services/products");
+
 // Return all the products
 router.get("/all", async (req, res) => {
-    res.send("The request was: /all");
+    try {
+        const productList = await services.getProducts();
+        console.log(productList);
+        res.send(productList);
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 // We can access the /:id as req.parms.id
