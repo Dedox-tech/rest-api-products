@@ -43,10 +43,15 @@ async function updateProduct(id, product) {
     return modifiedProduct;
 }
 
+async function deleteProduct(id) {
+    await ProductModel.findByIdAndDelete(id);
+}
+
 module.exports = {
     getProducts,
     getProductById,
     getProductByName,
     saveNewProduct,
     updateProduct,
+    deleteProduct,
 };
