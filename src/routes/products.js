@@ -49,12 +49,16 @@ router.post("/", async (req, res) => {
 
 // Put request modify the entire object
 router.put("/:id", async (req, res) => {
-    res.send("Put request");
-});
-
-// Patch request modify just a small part of the object
-router.patch("/:id", async (req, res) => {
-    res.send("Patch request");
+    try {
+        const updatedProduct = await services.updateProduct(
+            req.params.id,
+            req.body
+        );
+        console.log(updatedProduct);
+        res.send("The product was updated");
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 router.delete("/:id", async (req, res) => {

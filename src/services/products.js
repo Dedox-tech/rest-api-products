@@ -38,9 +38,15 @@ async function saveNewProduct(product) {
     }
 }
 
+async function updateProduct(id, product) {
+    const modifiedProduct = await ProductModel.findByIdAndUpdate(id, product);
+    return modifiedProduct;
+}
+
 module.exports = {
     getProducts,
     getProductById,
     getProductByName,
     saveNewProduct,
+    updateProduct,
 };

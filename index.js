@@ -11,7 +11,7 @@ app.use(express.json());
 app.use("/products", productRouter);
 
 app.get("/", (req, res) => {
-    res.send("Hello world I am good what about you");
+    res.send("Simple REST API for a group of products");
 });
 
 app.listen(port, () => {
