@@ -16,9 +16,15 @@ router.get("/all", async (req, res) => {
     }
 });
 
-// We can access the /:id as req.parms.id
-router.get("/detail/:id", async (req, res) => {
-    res.send("The request was asking for the id");
+// We can access the /:id as req.params.id
+router.get("/details/:id", async (req, res) => {
+    try {
+        const specificProduct = await services.getProductById(req.params.id);
+        console.log(specificProduct);
+        res.send(specificProduct);
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 // Return the data about the name provided in the query object

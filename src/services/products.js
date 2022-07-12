@@ -11,7 +11,7 @@ async function getProducts() {
 }
 
 async function getProductById(id) {
-    const specificProduct = await productModel.find(id);
+    const specificProduct = await productModel.findById(id);
     if (!specificProduct) {
         // Update for throw an error
         console.log("The product was not found");
