@@ -19,4 +19,12 @@ async function getProductById(id) {
     return specificProduct;
 }
 
-module.exports = { getProducts, getProductById };
+async function getProductByName(name) {
+    const specificProduct = await productModel.find({ name });
+    if (!specificProduct) {
+        console.log("There were not product with this name");
+    }
+    return specificProduct;
+}
+
+module.exports = { getProducts, getProductById, getProductByName };

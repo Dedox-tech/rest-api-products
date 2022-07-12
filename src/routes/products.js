@@ -29,6 +29,13 @@ router.get("/details/:id", async (req, res) => {
 
 // Return the data about the name provided in the query object
 router.get("/", async (req, res) => {
+    try {
+        const specificProduct = await services.getProductByName(req.query.name);
+        console.log(specificProduct);
+        res.send(specificProduct);
+    } catch (error) {
+        console.log(error);
+    }
     res.send(req.query.name);
 });
 
